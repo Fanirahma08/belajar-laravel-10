@@ -20,6 +20,9 @@
                         <p class="tmt-3">
                             {!! $post->content !!}
                         </p>
+                        <p class="tmt-3">
+                            {{ $post->user }}
+                        </p>
                     </div>
                 </div>
             </div>

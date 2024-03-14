@@ -49,7 +49,8 @@ class PostController extends Controller
         $this->validate($request, [
             'image'     => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'title'     => 'required|min:5',
-            'content'   => 'required|min:10'
+            'content'   => 'required|min:10',
+            'user'      => 'required|min:4',
         ]);
 
         //upload image
@@ -60,7 +61,8 @@ class PostController extends Controller
         Post::create([
             'image'     => $image->hashName(),
             'title'     => $request->title,
-            'content'   => $request->content
+            'content'   => $request->content,
+            'user'      => $request->user,
         ]);
 
         //redirect to index
@@ -106,7 +108,8 @@ class PostController extends Controller
         $this->validate($request, [
             'image'     => 'image|mimes:jpeg,jpg,png|max:2048',
             'title'     => 'required|min:5',
-            'content'   => 'required|min:10'
+            'content'   => 'required|min:10',
+            'user'      => 'required|min:4'
         ]);
 
         //get post by ID
@@ -126,7 +129,8 @@ class PostController extends Controller
             $post->update([
                 'image'     => $image->hashName(),
                 'title'     => $request->title,
-                'content'   => $request->content
+                'content'   => $request->content,
+                'user'      => $request->user
             ]);
 
         } else {
@@ -134,7 +138,8 @@ class PostController extends Controller
             //update post without image
             $post->update([
                 'title'     => $request->title,
-                'content'   => $request->content
+                'content'   => $request->content,
+                'user'      => $request->user,
             ]);
         }
 
